@@ -17,18 +17,18 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4">
+    <header className="fixed inset-x-0 top-8 z-50 px-4">
       <motion.nav
         initial={{ y: -40, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="mx-auto hidden w-fit items-center gap-2 rounded-full bg-neutral-950/40 px-4 py-3 backdrop-blur-md md:flex"
+        className="mx-auto hidden h-12 w-fit items-center gap-6 rounded-full bg-black/20 px-6 backdrop-blur-2xl md:flex"
       >
         {links.map((link) => (
           <a
             key={link.href}
             href={link.href}
-            className="rounded-full px-4 py-1 text-sm font-medium text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+            className="p-2 text-base leading-7.5 font-medium tracking-[-0.03em] text-white"
           >
             {link.label}
           </a>

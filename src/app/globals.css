@@ -149,4 +149,7 @@
   --color-brand-400: #860d39;
 
   --color-gold-100: #F3B64C;
+
+  --font-anton: var(--font-anton), sans-serif;
+  --font-bonheur: var(--font-bonheur), cursive;
 }

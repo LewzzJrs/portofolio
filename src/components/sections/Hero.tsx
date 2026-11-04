@@ -11,10 +11,10 @@ const stats = [
 ];
 
 const techIcons = [
-  { src: "/images/icon-js.svg", alt: "JavaScript" },
-  { src: "/images/icon-css.svg", alt: "CSS" },
-  { src: "/images/icon-html.svg", alt: "HTML" },
-  { src: "/images/icon-react.svg", alt: "React" },
+  { src: "/images/icon-js.svg", alt: "JavaScript", width: 50.91807556152344, height: 50.91807556152344 },
+  { src: "/images/icon-css.svg", alt: "CSS", width: 34.71712112426758, height: 40.7548828125 },
+  { src: "/images/icon-html.svg", alt: "HTML", width: 40.503013610839844, height: 40.503013610839844 },
+  { src: "/images/icon-react.svg", alt: "React", width: 43.974700927734375, height: 39.34578323364258 },
 ];
 
 export default function Hero() {
@@ -27,7 +27,12 @@ export default function Hero() {
         className="absolute left-30 top-[107.57px] flex flex-col items-center gap-[21.78px] rounded-full border-[1.36px] border-brand-300 px-[21.78px] py-[32.67px]"
       >
         {techIcons.map((icon) => (
-          <Image key={icon.alt} src={icon.src} alt={icon.alt} width={40} height={40} />
+          <div
+          key={icon.alt}
+          className="flex size-[69.43px] items-center justify-center rounded-full border-[1.36px] border-brand-300 p-[11.57px]"
+          >
+            <Image src={icon.src} alt={icon.alt} width={icon.width} height={icon.height} className="object-contain" />
+          </div>
         ))}
       </motion.div>
       

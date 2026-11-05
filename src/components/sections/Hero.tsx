@@ -22,7 +22,7 @@ const techIcons = [
 export default function Hero() {
   return (
     <MotionConfig reducedMotion="user">
-      <section id="home" className="relative h-257 overflow-hidden lg:h-256">
+      <section id="home" className="relative h-257 overflow-hidden max-[374px]:zoom-[0.92] max-[359px]:zoom-[0.81] lg:h-256 lg:max-[1279px]:zoom-[0.8]">
         <Image
           src="/images/waves.png"
           alt=""
@@ -32,7 +32,7 @@ export default function Hero() {
           className="absolute left-1/2 -top-px max-w-none -translate-x-1/2 mix-blend-luminosity"
         />
         <div className="absolute inset-0 bg-[#A53860]/94" />
-        <div className="relative mx-auto h-257 w-98.25 lg:h-full lg:w-360">
+        <div className="relative left-1/2 h-257 w-98.25 -translate-x-1/2 lg:h-full lg:w-360">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
@@ -174,8 +174,19 @@ export default function Hero() {
               </a>
             </div>
           </div>
+          <a
+            href="#about"
+            className="absolute z-30 left-34.5 top-245 -m-2.5 rounded-full p-2.5 font-sans text-xs font-semibold leading-6 tracking-[-0.03em] text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:left-161.5 lg:top-238.5 lg:text-base lg:leading-7.5 lg:tracking-normal"
+          >
+            <span className="flex items-center gap-0.5 rounded-full border border-brand-300 bg-brand-400 px-3">
+              Scroll Down
+              <span className="flex size-5 items-center justify-center lg:size-6">
+                <Image src="/images/mouse.svg" alt="" width={14} height={20} className="h-4 w-auto lg:h-5" />
+              </span>
+            </span>
+          </a>
         </div>
       </section>
     </MotionConfig>
-  )
+    )
 }

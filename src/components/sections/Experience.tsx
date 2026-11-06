@@ -1,29 +1,13 @@
 import Image from "next/image";
 
-const description =
-  "Built responsive web interfaces using modern frameworks like React.js, ensuring seamless integration with backend systems. Optimized performance, implemented accessible designs, and delivered clean, reusable code to enhance user experience and scalability.";
-
 const experiences = [
   {
-    company: "Airbnb",
-    logo: "/images/logo-airbnb.svg",
-    period: "2025 - Present",
-    role: "Frontend Developer",
-    description,
-  },
-  {
-    company: "Airtasker",
-    logo: "/images/logo-airtasker.svg",
-    period: "2025 - Present",
-    role: "Frontend Developer",
-    description,
-  },
-  {
-    company: "Slack",
-    logo: "/images/logo-slack.svg",
-    period: "2025 - Present",
-    role: "Frontend Developer",
-    description,
+    company: "MaropoChord",
+    logo: { src: "/images/logo-maropochord.svg", width: 252, height: 80 },
+    period: "2026 - Present",
+    role: "Founder & Developer",
+    description:
+      "A public chord site for pop, worship, Indonesian regional, Western and children’s songs, with 114 songs live. Grown out of the Exo Worship codebase and opened up: key changes, capo, number chords, guitar and piano diagrams, and setlists. Next.js 16 and Supabase with ChordSheetJS for transposition, PDF export and import, and a service worker that keeps opened pages readable offline.",
   },
 ];
 
@@ -58,10 +42,10 @@ export default function Experience() {
               <div className="h-17.75 w-[121.7px] shrink-0 rounded-[16px] border border-neutral-800 p-[5px] lg:h-28 lg:w-48 lg:p-2">
                 <div className="flex size-full items-center justify-center rounded-[10px] border border-neutral-800 lg:rounded-[16px]">
                   <Image
-                    src={experience.logo}
+                    src={experience.logo.src}
                     alt={experience.company}
-                    width={128}
-                    height={48}
+                    width={experience.logo.width}
+                    height={experience.logo.height}
                     className="h-auto w-[81px] lg:w-32"
                   />
                 </div>

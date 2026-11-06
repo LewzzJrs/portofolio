@@ -2,6 +2,8 @@
 
 Personal portfolio of Lewi Maropo, a frontend developer. It is a single-page site that shows my skills, projects, and experience, with a contact form that sends messages straight to my email.
 
+**Live demo:** [portofolio-1-seven-mu.vercel.app](https://portofolio-1-seven-mu.vercel.app/)
+
 ## Features
 
 - Responsive layout built from a Figma design, tested from 320px to 1440px
@@ -16,6 +18,7 @@ Personal portfolio of Lewi Maropo, a frontend developer. It is a single-page sit
 - React 19 and TypeScript
 - Tailwind CSS 4
 - Framer Motion
+- shadcn/ui and Radix UI
 - [Web3Forms](https://web3forms.com) for the contact form
 
 ## Getting started

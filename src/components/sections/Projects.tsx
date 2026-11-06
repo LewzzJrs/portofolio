@@ -29,7 +29,6 @@ const projects: Project[] = [
     title: "Crypto Dashboard",
     category: "Crypto · Market Dashboard",
     image: "/images/work/crypto-dashboard.webp",
-    url: "https://github.com/LewzzJrs/crypto-dashboard",
   },
   {
     title: "Stock Dashboard",

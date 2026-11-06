@@ -105,23 +105,25 @@ export default function Skill() {
             );
           })}
         </ul>
-        <div className="flex gap-3">
-          {arrows.map(({ label, Icon, enabled, direction }) => (
-            <button
-              key={label}
-              type="button"
-              aria-label={label}
-              aria-disabled={!enabled}
-              onClick={() => scrollPage(direction)}
-              className={cn(
-                "flex size-[45.33px] items-center justify-center rounded-full border border-neutral-300 outline-offset-2 transition-colors focus-visible:outline-2 focus-visible:outline-neutral-950",
-                enabled ? "text-neutral-950 hover:bg-neutral-100" : "cursor-not-allowed text-neutral-400"
-              )}
-            >
-              <Icon size={24} strokeWidth={1.5} />
-            </button>
-          ))}
-        </div>
+        {(canPrev || canNext) && (
+          <div className="flex gap-3">
+            {arrows.map(({ label, Icon, enabled, direction }) => (
+              <button
+                key={label}
+                type="button"
+                aria-label={label}
+                aria-disabled={!enabled}
+                onClick={() => scrollPage(direction)}
+                className={cn(
+                  "flex size-[45.33px] items-center justify-center rounded-full border border-neutral-300 outline-offset-2 transition-colors focus-visible:outline-2 focus-visible:outline-neutral-950",
+                  enabled ? "text-neutral-950 hover:bg-neutral-100" : "cursor-not-allowed text-neutral-400"
+                )}
+              >
+                <Icon size={24} strokeWidth={1.5} />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

@@ -23,7 +23,7 @@ export default function About() {
     <section id="about" className="bg-white">
       <div className="px-4 py-10 lg:px-30 lg:py-20">
         <h2 className="mx-auto max-w-223 text-center text-[28px] font-medium leading-9.5 tracking-[-0.03em] text-neutral-950 lg:text-4xl lg:leading-11 lg:tracking-[-0.02em]">
-          As frontend developers, we bring designs to life with{" "}
+          As a frontend developer, I bring designs to life with{" "}
           <span className="text-brand-300">clean</span>,{" "}
           <span className="text-brand-300">responsive code</span> that blends creativity 🎨 with usability 🌟.
         </h2>

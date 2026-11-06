@@ -7,7 +7,7 @@ const columns = [
     highlighted: true,
     icon: "/images/icon-check.svg",
     items: [
-      "React Expert",
+      "Hands-On React Experience",
       "Precise Website Implementation",
       "TypeScript Proficiency",
       "Clean, Maintainable Code",

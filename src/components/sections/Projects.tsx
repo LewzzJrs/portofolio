@@ -2,8 +2,10 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { cn } from "cn";
+import { Lift, Reveal } from "@/components/Motion";
 
 type Project = {
   title: string;
@@ -63,24 +65,26 @@ export default function Projects() {
   const visible = showAll ? projects : projects.slice(0, featuredCount);
 
   return (
-    <section id="projects" className="bg-white px-4 py-10 lg:px-30 lg:py-20">
+    <section id="projects" className="bg-white px-4 py-10 md:px-10 lg:px-16 xl:px-30 lg:py-20">
       <div className="mx-auto flex max-w-300 flex-col gap-6 lg:gap-12">
-        <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex flex-col gap-2 text-neutral-950 lg:max-w-171.5">
-            <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
+        <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+          <Reveal className="flex flex-col gap-2 text-neutral-950 lg:max-w-171.5" from="left">
+            <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] md:text-[34px] md:leading-11.5 lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
               Design to Code Accuracy
             </h2>
             <p className="text-sm font-medium leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
               I translated design mockups into pixel-perfect, responsive components, ensuring a
               smooth user experience across all devices.
             </p>
-          </div>
-          <button
+          </Reveal>
+          <motion.button
+            whileHover={{ y: -5, scale: 1.04 }}
+            whileTap={{ scale: 0.93 }}
             type="button"
             aria-expanded={showAll}
             aria-controls="project-list"
             onClick={() => setShowAll((current) => !current)}
-            className="flex h-14 w-full items-center justify-between gap-2 rounded-full border border-neutral-300 py-2 pl-4 pr-2 text-base font-semibold leading-7.5 text-neutral-950 outline-offset-2 transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-neutral-950 lg:w-39 lg:shrink-0"
+            className="flex h-14 w-full items-center justify-between gap-2 rounded-full border border-neutral-300 py-2 pl-4 pr-2 text-base font-semibold leading-7.5 text-neutral-950 outline-offset-2 transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-neutral-950 sm:w-39 sm:shrink-0"
           >
             {showAll ? "Show Less" : "See All"}
             <span className="flex size-9 items-center justify-center rounded-full bg-neutral-950 text-white">
@@ -90,64 +94,68 @@ export default function Projects() {
                 className={cn("motion-safe:transition-transform", showAll && "-rotate-90")}
               />
             </span>
-          </button>
+          </motion.button>
         </div>
-        <ul id="project-list" className="grid gap-5 lg:grid-cols-3">
+        <ul id="project-list" className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {visible.map((project, index) => (
-            <li key={project.title} className="group relative flex flex-col">
-              <div className="relative rounded-[20px] bg-neutral-100 p-4">
-                <div className="relative aspect-square">
-                  <Image
-                    src={project.image}
-                    alt={`${project.title} screenshot`}
-                    fill
-                    sizes="(min-width: 1024px) 355px, calc(100vw - 64px)"
-                    className="rounded-[8px] object-cover"
-                  />
-                </div>
-                {index < featuredCount && (
-                  <>
-                    <Image
-                      src="/images/ribbon-fold.svg"
-                      alt=""
-                      width={10}
-                      height={17}
-                      className="absolute -left-2.25 top-10"
-                    />
-                    <span className="absolute -left-2.25 top-7 h-5.25 rounded-r-full bg-gold-100 pl-1.75 pr-3 text-xs font-semibold leading-5.25 tracking-[-0.03em] text-neutral-950">
-                      Best Portfolio
-                    </span>
-                  </>
-                )}
-              </div>
-              <div className="flex flex-1 items-center gap-6 rounded-[20px] bg-neutral-100 p-4">
-                <div className="flex min-w-0 flex-1 flex-col gap-3">
-                  <h3 className="text-base font-bold leading-7.5 tracking-[-0.02em] text-neutral-950 lg:text-lg lg:leading-8 lg:tracking-normal">
-                    {project.url ? (
-                      <a
-                        href={project.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="outline-none after:absolute after:inset-0 after:rounded-[20px] after:outline-offset-2 focus-visible:after:outline-2 focus-visible:after:outline-neutral-950"
-                      >
-                        {project.title}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    ) : (
-                      project.title
+            <li key={project.title}>
+              <Reveal className="h-full" from="zoom" delay={(index % 3) * 0.15}>
+                <Lift className="group relative flex h-full flex-col">
+                  <div className="relative rounded-[20px] bg-neutral-100 p-4">
+                    <div className="relative aspect-square">
+                      <Image
+                        src={project.image}
+                        alt={`${project.title} screenshot`}
+                        fill
+                        sizes="(min-width: 1024px) 355px, (min-width: 768px) 50vw, calc(100vw - 64px)"
+                        className="rounded-[8px] object-cover"
+                      />
+                    </div>
+                    {index < featuredCount && (
+                      <>
+                        <Image
+                          src="/images/ribbon-fold.svg"
+                          alt=""
+                          width={10}
+                          height={17}
+                          className="absolute -left-2.25 top-10"
+                        />
+                        <span className="absolute -left-2.25 top-7 h-5.25 rounded-r-full bg-gold-100 pl-1.75 pr-3 text-xs font-semibold leading-5.25 tracking-[-0.03em] text-neutral-950">
+                          Best Portfolio
+                        </span>
+                      </>
                     )}
-                  </h3>
-                  <hr className="border-neutral-300" />
-                  <p className="text-xs font-medium leading-6 text-neutral-600 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
-                    {project.category}
-                  </p>
-                </div>
-                {project.url && (
-                  <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-300 text-white transition-colors group-hover:bg-brand-400">
-                    <ArrowRight size={20} strokeWidth={1.5} />
-                  </span>
-                )}
-              </div>
+                  </div>
+                  <div className="flex flex-1 items-center gap-6 rounded-[20px] bg-neutral-100 p-4">
+                    <div className="flex min-w-0 flex-1 flex-col gap-3">
+                      <h3 className="text-base font-bold leading-7.5 tracking-[-0.02em] text-neutral-950 lg:text-lg lg:leading-8 lg:tracking-normal">
+                        {project.url ? (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="outline-none after:absolute after:inset-0 after:rounded-[20px] after:outline-offset-2 focus-visible:after:outline-2 focus-visible:after:outline-neutral-950"
+                          >
+                            {project.title}
+                            <span className="sr-only"> (opens in a new tab)</span>
+                          </a>
+                        ) : (
+                          project.title
+                        )}
+                      </h3>
+                      <hr className="border-neutral-300" />
+                      <p className="text-xs font-medium leading-6 text-neutral-600 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
+                        {project.category}
+                      </p>
+                    </div>
+                    {project.url && (
+                      <span className="flex size-9 shrink-0 items-center justify-center rounded-full bg-brand-300 text-white transition-colors group-hover:bg-brand-400">
+                        <ArrowRight size={20} strokeWidth={1.5} />
+                      </span>
+                    )}
+                  </div>
+                </Lift>
+              </Reveal>
             </li>
           ))}
         </ul>

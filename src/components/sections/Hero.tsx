@@ -158,7 +158,9 @@ export default function Hero() {
                   </Fragment>
                 ))}
               </div>
-              <a
+              <motion.a
+                whileHover={{ y: -5, scale: 1.04 }}
+                whileTap={{ scale: 0.93 }}
                 href="#contact"
                 className="group flex h-12 w-full items-center gap-2 rounded-full bg-gold-100 py-2 pr-2 pl-4 transition-[filter] hover:brightness-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white lg:h-14"
               >
@@ -171,7 +173,7 @@ export default function Hero() {
                     className="text-neutral-25 transition-transform group-hover:translate-x-0.5"
                   />
                 </span>
-              </a>
+              </motion.a>
             </div>
           </div>
           <a

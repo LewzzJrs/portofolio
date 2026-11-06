@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState, type FormEvent, type MouseEvent } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { cn } from "cn";
+import { Reveal } from "@/components/Motion";
+import { Button } from "@/components/ui/button";
 
 const previews = [
   { title: "Exo Worship Library", image: "/images/work/exo-worship.webp" },
@@ -32,8 +35,6 @@ type Status = keyof typeof popups;
 const labelClass = "flex flex-col gap-0.5 text-sm font-bold leading-7 text-neutral-950 lg:gap-1.5";
 const fieldClass =
   "w-full rounded-[12px] border border-neutral-300 bg-white px-4 py-2 text-base font-medium leading-7.5 text-neutral-950 outline-offset-2 placeholder:text-neutral-600 focus-visible:outline-2 focus-visible:outline-neutral-950 lg:tracking-[-0.03em]";
-const buttonClass =
-  "h-11 w-full rounded-full bg-brand-300 text-sm font-bold leading-7 text-white outline-offset-2 transition-colors hover:bg-brand-400 focus-visible:outline-2 focus-visible:outline-neutral-950 disabled:cursor-not-allowed disabled:opacity-70 lg:h-12";
 
 export default function Contact() {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -80,11 +81,11 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="relative bg-white px-4 py-10 lg:p-30">
+    <section id="contact" className="relative bg-white px-4 py-10 md:px-10 lg:px-16 lg:py-30 xl:px-30">
       <div className="mx-auto flex max-w-300 flex-col gap-6 lg:grid lg:grid-cols-[540fr_612fr] lg:items-start lg:gap-12">
-        <div className="flex flex-col gap-6 lg:gap-10">
+        <Reveal className="flex flex-col gap-6 lg:gap-10" from="left">
           <div className="flex flex-col gap-2 text-neutral-950">
-            <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
+            <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] md:text-[34px] md:leading-11.5 lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
               Let’s Work Together
             </h2>
             <p className="text-sm font-medium leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
@@ -92,7 +93,7 @@ export default function Contact() {
               from you.
             </p>
           </div>
-          <ul className="grid grid-cols-3 gap-[15.5px] lg:max-w-116.5 lg:gap-5">
+          <ul className="grid grid-cols-3 gap-[15.5px] sm:max-w-116.5 lg:gap-5">
             {previews.map((preview) => (
               <li key={preview.title} className="relative aspect-square">
                 <Image
@@ -105,8 +106,8 @@ export default function Contact() {
               </li>
             ))}
           </ul>
-        </div>
-        <div className="relative mb-2.5 mt-[160.5px] lg:m-0">
+        </Reveal>
+        <Reveal className="relative mb-2.5 mt-[160.5px] lg:m-0" from="right" delay={0.1}>
           <Image
             src="/images/contact-character.svg"
             alt=""
@@ -149,11 +150,18 @@ export default function Contact() {
                 className={cn(fieldClass, "min-h-33.5 resize-y")}
               />
             </label>
-            <button type="submit" disabled={sending} className={buttonClass}>
-              {sending ? "Sending…" : "Let’s Talk"}
-            </button>
+            <Button asChild variant="brand" size="pill">
+              <motion.button
+                type="submit"
+                disabled={sending}
+                whileHover={{ y: -5, scale: 1.04 }}
+                whileTap={{ scale: 0.93 }}
+              >
+                {sending ? "Sending…" : "Let’s Talk"}
+              </motion.button>
+            </Button>
           </form>
-        </div>
+        </Reveal>
       </div>
       <dialog
         ref={dialogRef}
@@ -187,9 +195,16 @@ export default function Contact() {
                     {popup.text}
                   </p>
                 </div>
-                <button type="button" onClick={handleAction} className={buttonClass}>
-                  {popup.action}
-                </button>
+                <Button asChild variant="brand" size="pill">
+                  <motion.button
+                    type="button"
+                    onClick={handleAction}
+                    whileHover={{ y: -5, scale: 1.04 }}
+                    whileTap={{ scale: 0.93 }}
+                  >
+                    {popup.action}
+                  </motion.button>
+                </Button>
               </div>
             </div>
           </div>

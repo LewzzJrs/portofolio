@@ -1,4 +1,5 @@
 import { Mail } from "lucide-react";
+import { Lift } from "@/components/Motion";
 
 function GithubIcon() {
   return (
@@ -28,7 +29,7 @@ const socials = [
 
 export default function Footer() {
   return (
-    <footer className="bg-neutral-950 px-4 py-8 lg:px-32 lg:py-6">
+    <footer className="bg-neutral-950 px-4 py-8 md:px-10 lg:px-16 xl:px-32 lg:py-6">
       <div className="mx-auto flex max-w-300 flex-col-reverse gap-6 lg:flex-row lg:items-center lg:justify-between">
         <p className="text-xs leading-6 text-neutral-25 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
           © {new Date().getFullYear()} Lewi Maropo. All rights reserved.
@@ -36,15 +37,17 @@ export default function Footer() {
         <ul className="flex gap-3 lg:gap-4">
           {socials.map((social) => (
             <li key={social.label}>
-              <a
-                href={social.href}
-                aria-label={social.label}
-                target={social.href.startsWith("http") ? "_blank" : undefined}
-                rel={social.href.startsWith("http") ? "noreferrer" : undefined}
-                className="flex size-10 items-center justify-center rounded-full border border-neutral-800 text-neutral-25 outline-offset-2 transition-colors hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-neutral-25"
-              >
-                {social.icon}
-              </a>
+              <Lift>
+                <a
+                  href={social.href}
+                  aria-label={social.label}
+                  target={social.href.startsWith("http") ? "_blank" : undefined}
+                  rel={social.href.startsWith("http") ? "noreferrer" : undefined}
+                  className="flex size-10 items-center justify-center rounded-full border border-neutral-800 text-neutral-25 outline-offset-2 transition-colors hover:bg-neutral-800 focus-visible:outline-2 focus-visible:outline-neutral-25"
+                >
+                  {social.icon}
+                </a>
+              </Lift>
             </li>
           ))}
         </ul>

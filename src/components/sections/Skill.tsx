@@ -2,8 +2,10 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "cn";
+import { Reveal } from "@/components/Motion";
 
 const skills = [
   {
@@ -61,27 +63,29 @@ export default function Skill() {
   return (
     <section
       id="skill"
-      className="flex flex-col items-center gap-6 bg-white bg-linear-to-b from-[#9E385E]/0 to-[#9E385E]/10 px-4 py-10 lg:gap-12 lg:px-30 lg:py-20"
+      className="flex flex-col items-center gap-6 bg-white bg-linear-to-b from-[#9E385E]/0 to-[#9E385E]/10 px-4 py-10 lg:gap-12 md:px-10 lg:px-16 xl:px-30 lg:py-20"
     >
-      <div className="flex max-w-211.75 flex-col gap-2 px-1 text-center text-neutral-950 lg:px-0">
-        <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
+      <Reveal className="flex max-w-211.75 flex-col gap-2 px-1 text-center text-neutral-950 lg:px-0">
+        <h2 className="text-[28px] font-bold leading-9.5 tracking-[-0.02em] md:text-[34px] md:leading-11.5 lg:text-[40px] lg:leading-14 lg:tracking-[-0.03em]">
           Code, Design, and Everything in Between
         </h2>
         <p className="text-sm font-medium leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
           These are the technologies that power my workflow and bring ideas to life.
         </p>
-      </div>
-      <div className="flex w-full max-w-230 flex-col items-center gap-8">
+      </Reveal>
+      <Reveal className="flex w-full max-w-230 flex-col items-center gap-8" from="zoom" delay={0.15}>
         <ul
           ref={listRef}
           onScroll={updateArrows}
-          className="flex w-full snap-x snap-mandatory gap-4 overflow-x-auto [scrollbar-width:none] motion-safe:scroll-smooth lg:gap-5"
+          className="-my-5 flex w-full snap-x snap-mandatory gap-4 overflow-x-auto py-5 [scrollbar-width:none] motion-safe:scroll-smooth lg:gap-5"
         >
           {skills.map((skill, index) => {
             const gold = index % 2 === 0;
             return (
-              <li
+              <motion.li
                 key={skill.name}
+                whileHover={{ y: -18, rotate: index % 2 === 0 ? -2 : 2 }}
+                transition={{ type: "spring", stiffness: 320, damping: 14 }}
                 className={cn(
                   "flex min-h-70.25 w-[calc((100%-16px)/2)] max-w-53.75 shrink-0 snap-start flex-col items-center gap-3 rounded-[100px] px-4 py-10 lg:w-53.75",
                   gold ? "bg-gold-100" : "border border-neutral-300 bg-neutral-25"
@@ -101,7 +105,7 @@ export default function Skill() {
                     {skill.description}
                   </p>
                 </div>
-              </li>
+              </motion.li>
             );
           })}
         </ul>
@@ -124,7 +128,7 @@ export default function Skill() {
             ))}
           </div>
         )}
-      </div>
+      </Reveal>
     </section>
   );
 }

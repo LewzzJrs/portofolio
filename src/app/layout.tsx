@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Anton, Bonheur_Royale } from "next/font/google";
+import { MotionProvider } from "@/components/Motion";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -27,9 +28,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-pt-16 lg:scroll-pt-0">
       <body className={`${montserrat.variable} ${anton.variable} ${bonheur.variable} font-sans antialiased`}>
-        {children}
+        <MotionProvider>{children}</MotionProvider>
       </body>
     </html>
   );

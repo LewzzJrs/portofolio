@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Reveal } from "@/components/Motion";
 
 const cards = [
   {
@@ -18,32 +19,38 @@ const cards = [
   },
 ];
 
+const cardDirections = ["left", "up", "right"] as const;
+
 export default function About() {
   return (
     <section id="about" className="bg-white">
-      <div className="px-4 py-10 lg:px-30 lg:py-20">
-        <h2 className="mx-auto max-w-223 text-center text-[28px] font-medium leading-9.5 tracking-[-0.03em] text-neutral-950 lg:text-4xl lg:leading-11 lg:tracking-[-0.02em]">
-          As a frontend developer, I bring designs to life with{" "}
-          <span className="text-brand-300">clean</span>,{" "}
-          <span className="text-brand-300">responsive code</span> that blends creativity 🎨 with usability 🌟.
-        </h2>
+      <div className="px-4 py-10 md:px-10 lg:px-16 xl:px-30 lg:py-20">
+        <Reveal from="zoom">
+          <h2 className="mx-auto max-w-223 text-center text-[28px] font-medium leading-9.5 tracking-[-0.03em] text-neutral-950 lg:text-4xl lg:leading-11 lg:tracking-[-0.02em]">
+            As a frontend developer, I bring designs to life with{" "}
+            <span className="text-brand-300">clean</span>,{" "}
+            <span className="text-brand-300">responsive code</span> that blends creativity 🎨 with usability 🌟.
+          </h2>
+        </Reveal>
       </div>
-      <div className="flex flex-col gap-4 px-4 py-10 lg:flex-row lg:items-center lg:gap-10 lg:px-30 lg:py-20">
+      <div className="flex flex-col gap-4 px-4 py-10 lg:flex-row lg:items-center lg:gap-10 md:px-10 lg:px-16 xl:px-30 lg:py-20">
         {cards.map((card, index) => (
           <Fragment key={card.title}>
-            <article className="flex flex-col gap-3 lg:min-w-0 lg:flex-1 lg:gap-4">
-              <div className="flex size-12 items-center justify-center rounded-full border border-neutral-300 lg:size-15.75 lg:border-[1.31px]">
-                <span aria-hidden="true" className="text-2xl font-bold leading-7 lg:text-[32px] lg:leading-9">
-                  {card.emoji}
-                </span>
-              </div>
-              <div className="flex flex-col gap-2 text-neutral-950">
-                <h3 className="text-lg font-bold leading-8 lg:text-2xl lg:leading-9">{card.title}</h3>
-                <p className="text-sm leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
-                  {card.description}
-                </p>
-              </div>
-            </article>
+            <Reveal className="lg:min-w-0 lg:flex-1" from={cardDirections[index]} delay={index * 0.15}>
+              <article className="flex flex-col gap-3 lg:gap-4">
+                <div className="flex size-12 items-center justify-center rounded-full border border-neutral-300 lg:size-15.75 lg:border-[1.31px]">
+                  <span aria-hidden="true" className="text-2xl font-bold leading-7 lg:text-[32px] lg:leading-9">
+                    {card.emoji}
+                  </span>
+                </div>
+                <div className="flex flex-col gap-2 text-neutral-950">
+                  <h3 className="text-lg font-bold leading-8 lg:text-2xl lg:leading-9">{card.title}</h3>
+                  <p className="text-sm leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
+                    {card.description}
+                  </p>
+                </div>
+              </article>
+            </Reveal>
             {index > 0 && <div className="border-t border-neutral-300 lg:hidden" />}
             {index < cards.length - 1 && (
               <div className="hidden h-44 w-px shrink-0 bg-neutral-300 lg:block" />

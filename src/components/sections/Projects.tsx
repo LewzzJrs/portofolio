@@ -71,7 +71,7 @@ export default function Projects() {
               Design to Code Accuracy
             </h2>
             <p className="text-sm font-medium leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
-              We translated design mockups into pixel-perfect, responsive components, ensuring a
+              I translated design mockups into pixel-perfect, responsive components, ensuring a
               smooth user experience across all devices.
             </p>
           </div>

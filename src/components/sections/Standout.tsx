@@ -41,7 +41,7 @@ export default function Standout() {
             More Than Just Code
           </h2>
           <p className="text-sm font-medium leading-7 lg:text-base lg:leading-7.5 lg:tracking-[-0.03em]">
-            We care about design, performance, and user experience all in one.
+            I care about design, performance, and user experience all in one.
           </p>
         </div>
         <div className="flex flex-col gap-6 lg:flex-row">

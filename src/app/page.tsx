@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import Skill from "@/components/sections/Skill";
+import Standout from "@/components/sections/Standout";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <Skill />
+      <Standout />
     </main>
   );
 }

@@ -4,7 +4,7 @@ const cards = [
   {
     emoji: "⚙️",
     title: "COMPONENT-BASED DEVELOPMENT",
-    description: "Reusable, scalable code built with modern frameworks like React or Vue.",
+    description: "Reusable, scalable code built with modern frameworks like React and Next.js.",
   },
   {
     emoji: "🎨",

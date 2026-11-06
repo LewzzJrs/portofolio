@@ -8,8 +8,8 @@ import { ArrowRight } from "lucide-react";
 const stats = [
   { value: "2+", label: "Years Experience" },
   { value: "99%", label: "Client Satisfaction" },
-  { value: "3", label: "Project Delivered" },
-  { value: "50", label: "Clients Worldwide" },
+  { value: "7", label: "Projects Built" },
+  { value: "50", label: "Users Served" },
 ];
 
 const techIcons = [

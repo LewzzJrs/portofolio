@@ -4,6 +4,7 @@ import About from "@/components/sections/About";
 import Skill from "@/components/sections/Skill";
 import Standout from "@/components/sections/Standout";
 import Projects from "@/components/sections/Projects";
+import Experience from "@/components/sections/Experience";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Skill />
       <Standout />
       <Projects />
+      <Experience />
     </main>
   );
 }
